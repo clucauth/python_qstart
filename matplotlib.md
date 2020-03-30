@@ -44,3 +44,5 @@ Method-call:
     plt.title("Simple Plot")
     plt.legend()
     
+In general, we suggest to restrict pyplot to interactive plotting (e.g., in a Jupyter notebook), and to prefer the OO-style for non-interactive plotting (in functions and scripts that are intended to be reused as part of a larger project).
+
