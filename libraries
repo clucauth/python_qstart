@@ -1,0 +1,68 @@
+# Libraries
+
+
+[Reference](https://docs.python.org/3/library/)
+
+
+## sys
+
+This example: version_info is a tuple
+
+    import sys
+    sys.version_info
+    sys.argv
+    
+
+## logging
+
+Logging
+
+    import os
+    import platform
+    import logging
+
+    if platform.platform().startswith('Windows'):
+      logging_file = os.path.join(os.getenv('HOMEDRIVE'),
+                                os.getenv('HOMEPATH'),
+                                'test.log')
+    else:
+      logging_file = os.path.join(os.getenv('HOME'),
+                                'test.log')
+
+    print("Logging to", logging_file)
+
+    logging.basicConfig(
+      level=logging.DEBUG,
+      format='%(asctime)s : %(levelname)s : %(message)s',
+      filename=logging_file,
+      filemode='w',
+    )
+
+    logging.debug("Start of the program")
+    logging.info("Doing something")
+    logging.warning("Dying now")
+    
+
+## Build-in functions
+
+abs(x): absolute
+
+all(iterable): true if all elements are true
+
+any(iterable): true if any element is true
+
+ascii(object): convert object to ascii string, escape any non-ascii chars
+
+bin(x): to binary
+
+etc.
+
+
+## Built-in constants
+
+True, False
+
+None
+
+NotImplemented
+
