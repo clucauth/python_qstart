@@ -119,6 +119,83 @@ Set:
 
 ## OOP
 
+Method:
+
     class Person:
         def say_hi(self):
             print('Hello, how are you?')
+
+Init:
+
+    class Person:
+      def __init__(self, name):
+        self.name = name
+
+      def say_hi(self):
+        print('Hello, my name is', self.name)
+        
+Inheritance:
+
+    class SchoolMember:
+      '''Represents any school member.'''
+      def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        print('(Initialized SchoolMember: {})'.format(self.name))
+
+      def tell(self):
+        '''Tell my details.'''
+        print('Name:"{}" Age:"{}"'.format(self.name, self.age), end=" ")
+
+
+    class Teacher(SchoolMember):
+      '''Represents a teacher.'''
+      def __init__(self, name, age, salary):
+        SchoolMember.__init__(self, name, age)
+        self.salary = salary
+        print('(Initialized Teacher: {})'.format(self.name))
+
+      def tell(self):
+        SchoolMember.tell(self)
+        print('Salary: "{:d}"'.format(self.salary))
+        
+
+## Exception
+
+Error >< Exception
+
+Handle exception:
+
+    try:
+      text = input('Enter something --> ')
+    except EOFError:
+      print('Why did you do an EOF on me?')
+    except KeyboardInterrupt:
+      print('You cancelled the operation.')
+    else:
+      print('You entered {}'.format(text))
+      
+Custom and raise exception:
+
+    class ShortInputException(Exception):
+      '''A user-defined exception class.'''
+      def __init__(self, length, atleast):
+        Exception.__init__(self)
+        self.length = length
+        self.atleast = atleast
+        
+    try:
+      text = input('Enter something --> ')
+      if len(text) < 3:
+        raise ShortInputException(len(text), 3)
+      # Other work can continue as usual here
+    except EOFError:
+      print('Why did you do an EOF on me?')
+    except ShortInputException as ex:
+      print(('ShortInputException: The input was ' +
+           '{0} long, expected at least {1}')
+          .format(ex.length, ex.atleast))
+    else:
+      print('No exception was raised.')
+    finally:
+      // do something
